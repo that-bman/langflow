@@ -7,7 +7,7 @@ RUN npm install
 COPY ./src /app/src
 RUN npm run build
 
-FROM nginx
+FROM nginx:1.29.4-trixie
 COPY --from=frontend_build /app/build/ /usr/share/nginx/html
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
 COPY start-nginx.sh /start-nginx.sh
